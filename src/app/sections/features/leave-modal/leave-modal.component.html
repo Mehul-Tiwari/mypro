@@ -1,0 +1,136 @@
+<div *ngIf="isOpen" class="modal-overlay" (click)="!isSuccess && closeModal()">
+  <!-- Form Modal -->
+  <div *ngIf="!isSuccess" class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Apply for Leave</h2>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <form (ngSubmit)="submit()" class="leave-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="formData.name" 
+            name="name" 
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="rollNo">Roll No:</label>
+          <input 
+            type="text" 
+            id="rollNo" 
+            [(ngModel)]="formData.rollNo" 
+            name="rollNo" 
+            placeholder="Enter roll number"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="class">Class:</label>
+          <input 
+            type="text" 
+            id="class" 
+            [(ngModel)]="formData.class" 
+            name="class" 
+            placeholder="Enter your class"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="formData.email" 
+            name="email" 
+            placeholder="Enter email"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="teacher">Parent Teacher Name/ID:</label>
+        <input 
+          type="text" 
+          id="teacher" 
+          [(ngModel)]="formData.parentTeacherNameId" 
+          name="parentTeacherNameId" 
+          placeholder="Enter parent teacher name or ID"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="startDate">Starting Date:</label>
+          <input 
+            type="date" 
+            id="startDate" 
+            [(ngModel)]="formData.startingDate" 
+            name="startingDate" 
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="endDate">Ending Date:</label>
+          <input 
+            type="date" 
+            id="endDate" 
+            [(ngModel)]="formData.endingDate" 
+            name="endingDate" 
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Leave Reason:</label>
+        <textarea 
+          id="reason" 
+          [(ngModel)]="formData.leaveReason" 
+          name="leaveReason" 
+          placeholder="Enter reason for leave"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="file">Upload Document/Letter:</label>
+        <input 
+          type="file" 
+          id="file" 
+          (change)="onFileSelected($event)"
+          required
+        />
+        <span *ngIf="formData.file" class="file-name">{{ formData.file.name }}</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Submit Leave Request</button>
+        <button type="button" class="btn-cancel" (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success Modal -->
+  <div *ngIf="isSuccess" class="success-modal" (click)="$event.stopPropagation()">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">{{ successMessage }}</h2>
+    <div class="success-details">
+      <p><strong>Name:</strong> {{ submittedData.name }}</p>
+      <p><strong>Leave Period:</strong> {{ submittedData.startingDate }} to {{ submittedData.endingDate }}</p>
+      <p><strong>Document:</strong> {{ submittedData.file.name }}</p>
+    </div>
+    <p class="success-closing">Closing in a moment...</p>
+  </div>
+</div>

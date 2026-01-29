@@ -8,9 +8,13 @@
         <button *ngIf="feature.title === 'Assignment'" class="btn-submit-assignment" (click)="openAssignmentModal()">
           Submit Assignment
         </button>
+        <button *ngIf="feature.title === 'Apply Leave'" class="btn-apply-leave" (click)="openLeaveModal()">
+          Apply for Leave
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <app-assignment-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-assignment-modal>
+<app-leave-modal [isOpen]="isLeaveModalOpen" (close)="closeLeaveModal()"></app-leave-modal>

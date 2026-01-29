@@ -1,0 +1,110 @@
+<div *ngIf="isOpen" class="modal-overlay" (click)="!isSuccess && closeModal()">
+  <!-- Form Modal -->
+  <div *ngIf="!isSuccess" class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Submit Assignment</h2>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <form (ngSubmit)="submit()" class="assignment-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input 
+          type="text" 
+          id="name" 
+          [(ngModel)]="formData.name" 
+          name="name" 
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="rollNo">Roll No:</label>
+        <input 
+          type="text" 
+          id="rollNo" 
+          [(ngModel)]="formData.rollNo" 
+          name="rollNo" 
+          placeholder="Enter your roll number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="teacher">Teacher ID/Name:</label>
+        <input 
+          type="text" 
+          id="teacher" 
+          [(ngModel)]="formData.teacherIdOrName" 
+          name="teacherIdOrName" 
+          placeholder="Enter teacher ID or name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="assignmentNo">Assignment No:</label>
+        <input 
+          type="text" 
+          id="assignmentNo" 
+          [(ngModel)]="formData.assignmentNo" 
+          name="assignmentNo" 
+          placeholder="Enter assignment number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input 
+          type="text" 
+          id="subject" 
+          [(ngModel)]="formData.subject" 
+          name="subject" 
+          placeholder="Enter subject"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="submitDate">Submit Date:</label>
+        <input 
+          type="date" 
+          id="submitDate" 
+          [(ngModel)]="formData.submitDate" 
+          name="submitDate" 
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="file">Upload Assignment:</label>
+        <input 
+          type="file" 
+          id="file" 
+          (change)="onFileSelected($event)"
+          required
+        />
+        <span *ngIf="formData.file" class="file-name">{{ formData.file.name }}</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Submit</button>
+        <button type="button" class="btn-cancel" (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success Modal -->
+  <div *ngIf="isSuccess" class="success-modal" (click)="$event.stopPropagation()">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">{{ successMessage }}</h2>
+    <div class="success-details">
+      <p><strong>Roll No:</strong> {{ submittedData.rollNo }}</p>
+      <p><strong>Subject:</strong> {{ submittedData.subject }}</p>
+      <p><strong>File:</strong> {{ submittedData.file.name }}</p>
+    </div>
+    <p class="success-closing">Closing in a moment...</p>
+  </div>
+</div>
