@@ -18,12 +18,12 @@ export class FeaturesComponent {
   features: Feature[] = [
     {
       icon: '📚',
-      title: 'Rich Course Library',
+      title: 'Assignment',
       description: 'Access hundreds of courses across multiple disciplines'
     },
     {
       icon: '👥',
-      title: 'Expert Instructors',
+      title: 'Apply Leave',
       description: 'Learn from industry professionals and experienced educators'
     },
     {
