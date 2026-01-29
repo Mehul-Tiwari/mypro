@@ -1,0 +1,89 @@
+<div class="login-container">
+  <div class="login-wrapper">
+    <!-- Logo/Header -->
+    <div class="login-header">
+      <h1>User Login</h1>
+      <p>Access your account</p>
+    </div>
+
+    <!-- User Type Selector -->
+    <div class="user-type-selector">
+      <button 
+        [class.active]="userType === 'student'" 
+        (click)="switchUserType('student')"
+        type="button">
+        <span class="icon">👨‍🎓</span> Student
+      </button>
+      <button 
+        [class.active]="userType === 'teacher'" 
+        (click)="switchUserType('teacher')"
+        type="button">
+        <span class="icon">👨‍🏫</span> Teacher
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-alert">
+        <span class="error-icon">⚠️</span>
+        {{ errorMessage }}
+      </div>
+
+      <!-- Email Input -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          id="email"
+          type="email" 
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.input-error]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+          class="form-input">
+        <span *ngIf="loginForm.get('email')?.touched && emailError" class="error-text">
+          {{ emailError }}
+        </span>
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          id="password"
+          type="password" 
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.input-error]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+          class="form-input">
+        <span *ngIf="loginForm.get('password')?.touched && passwordError" class="error-text">
+          {{ passwordError }}
+        </span>
+      </div>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="form-options">
+        <label class="remember-me">
+          <input type="checkbox">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button 
+        type="submit" 
+        [disabled]="loginForm.invalid || isLoading"
+        class="login-btn">
+        <span *ngIf="!isLoading">Sign In as {{ userType | titlecase }}</span>
+        <span *ngIf="isLoading" class="loading-spinner">
+          Loading...
+        </span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <p>Don't have an account? <a href="#">Sign up here</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<header class="student-header">
+  <!-- Top Navigation Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <!-- Logo -->
+      <div class="logo">
+        <h2>EduHub</h2>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav">
+        <button class="nav-item">Courses ▾</button>
+        <button class="nav-item">Programs ▾</button>
+        <button class="nav-item">Students ▾</button>
+        <button class="nav-item">Resources ▾</button>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="top-actions">
+        <button class="icon-btn" title="Home" (click)="navigate('home')">
+          <span class="icon">🏠</span>
+        </button>
+        <button class="icon-btn" title="Profile" (click)="navigate('profile')">
+          <span class="icon">👤</span>
+        </button>
+        <button class="btn-primary" (click)="onLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Navigation Bar -->
+  <div class="secondary-bar">
+    <div class="secondary-bar-container">
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <input type="text" placeholder="Try courses, schedule, leave, anything!" />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Category Pills -->
+      <div class="category-pills">
+        <button class="pill" (click)="navigate('courses')">
+          <span class="icon">📚</span>
+          <span>Courses</span>
+        </button>
+        <button class="pill" (click)="navigate('schedule')">
+          <span class="icon">🎓</span>
+          <span>Schedule</span>
+        </button>
+        <button class="pill" (click)="navigate('leave')">
+          <span class="icon">📝</span>
+          <span>Leave</span>
+        </button>
+        <button class="pill" (click)="navigate('projects')">
+          <span class="icon">📁</span>
+          <span>Projects</span>
+        </button>
+        <button class="pill" (click)="navigate('docs')">
+          <span class="icon">📄</span>
+          <span>Docs</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
