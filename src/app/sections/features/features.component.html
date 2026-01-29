@@ -4,8 +4,13 @@
       <div class="feature-item" *ngFor="let feature of features">
         <div class="feature-icon">{{ feature.icon }}</div>
         <h3 class="feature-title">{{ feature.title }}</h3>
-        <p class="feature-description">{{ feature.description }}</p>
+        <p class="feature-description" *ngIf="feature.description">{{ feature.description }}</p>
+        <button *ngIf="feature.title === 'Assignment'" class="btn-submit-assignment" (click)="openAssignmentModal()">
+          Submit Assignment
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<app-assignment-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-assignment-modal>
