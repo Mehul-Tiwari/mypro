@@ -16,6 +16,21 @@ export class StudentHeaderComponent {
   }
 
   navigate(section: string): void {
+    const sectionMap: Record<string, string> = {
+      assignment: 'assignment-section',
+      leave: 'leave-section',
+      course: 'course-section'
+    };
+
+    const targetId = sectionMap[section];
+    if (targetId) {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+
     console.log('Navigating to:', section);
   }
 }

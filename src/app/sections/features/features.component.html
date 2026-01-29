@@ -1,7 +1,9 @@
 <div class="features-section">
   <div class="features-container">
     <div class="features-grid">
-      <div class="feature-item" *ngFor="let feature of features">
+      <div class="feature-item" *ngFor="let feature of features"
+           [attr.id]="feature.title === 'Assignment' ? 'assignment-section' : (feature.title === 'Apply Leave' ? 'leave-section' : (feature.title === 'Course' ? 'course-section' : null))"
+           [class.active-section]="activeSection === (feature.title === 'Assignment' ? 'assignment' : (feature.title === 'Apply Leave' ? 'leave' : (feature.title === 'Course' ? 'course' : null)))">
         <div class="feature-icon">{{ feature.icon }}</div>
         <h3 class="feature-title">{{ feature.title }}</h3>
         <p class="feature-description" *ngIf="feature.description">{{ feature.description }}</p>
@@ -11,6 +13,9 @@
         <button *ngIf="feature.title === 'Apply Leave'" class="btn-apply-leave" (click)="openLeaveModal()">
           Apply for Leave
         </button>
+        <button *ngIf="feature.title === 'Course'" class="btn-open-course" (click)="openCourseModal()">
+          View Courses
+        </button>
       </div>
     </div>
   </div>
@@ -18,3 +23,4 @@
 
 <app-assignment-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-assignment-modal>
 <app-leave-modal [isOpen]="isLeaveModalOpen" (close)="closeLeaveModal()"></app-leave-modal>
+<app-course-modal [isOpen]="isCourseModalOpen" (close)="closeCourseModal()"></app-course-modal>

@@ -100,7 +100,6 @@
           name="leaveReason" 
           placeholder="Enter reason for leave"
           rows="3"
-          required
         ></textarea>
       </div>
 
@@ -110,7 +109,6 @@
           type="file" 
           id="file" 
           (change)="onFileSelected($event)"
-          required
         />
         <span *ngIf="formData.file" class="file-name">{{ formData.file.name }}</span>
       </div>

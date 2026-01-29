@@ -1,0 +1,22 @@
+<div *ngIf="isOpen" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Courses & Video Resources</h2>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <div class="course-grid">
+      <div class="course-card" *ngFor="let course of courses">
+        <div class="course-badge">{{ course.level }}</div>
+        <h3 class="course-title">{{ course.title }}</h3>
+        <p class="course-description">{{ course.description }}</p>
+        <div class="course-video">
+          <span class="video-label">Video:</span>
+          <a class="video-link" [href]="course.videoUrl" target="_blank" rel="noopener">
+            {{ course.videoTitle }} →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

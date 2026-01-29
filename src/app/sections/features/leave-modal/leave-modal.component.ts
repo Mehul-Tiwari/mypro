@@ -45,8 +45,7 @@ export class LeaveModalComponent {
       this.formData.email &&
       this.formData.startingDate &&
       this.formData.endingDate &&
-      this.formData.leaveReason &&
-      this.formData.file
+      (this.formData.leaveReason || this.formData.file)
     ) {
       this.submittedData = { ...this.formData };
       this.isSuccess = true;
@@ -61,7 +60,7 @@ export class LeaveModalComponent {
         this.close.emit();
       }, 2500);
     } else {
-      alert('Please fill all fields');
+      alert('Please fill all required fields and provide a leave reason or upload a file');
     }
   }
 
