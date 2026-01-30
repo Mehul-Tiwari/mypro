@@ -2,7 +2,7 @@
   <div class="features-container">
     <div class="features-grid">
       <div class="feature-item" *ngFor="let feature of features"
-           [attr.id]="feature.title === 'Assignment' ? 'assignment-section' : (feature.title === 'Apply Leave' ? 'leave-section' : (feature.title === 'Course' ? 'course-section' : (feature.title === 'Schedule' ? 'schedule-section' : (feature.title === 'Notice' ? 'notice-section' : null))))"
+           [attr.id]="feature.title === 'Assignment' ? 'assignment-section' : (feature.title === 'Apply Leave' ? 'leave-section' : (feature.title === 'Course' ? 'course-section' : (feature.title === 'Schedule' ? 'schedule-section' : (feature.title === 'Notice' ? 'notice-section' : (feature.title === 'Project' ? 'project-section' : null)))))"
            [class.active-section]="feature.title !== 'Course' && activeSection === (feature.title === 'Assignment' ? 'assignment' : (feature.title === 'Apply Leave' ? 'leave' : null))">
         <div class="feature-icon">{{ feature.icon }}</div>
         <h3 class="feature-title">{{ feature.title }}</h3>
@@ -21,6 +21,9 @@
         </button>
         <button *ngIf="feature.title === 'Notice'" class="btn-notice" (click)="openNoticeModal()">
           View Notices
+        </button>
+        <button *ngIf="feature.title === 'Project'" class="btn-project" (click)="openProjectModal()">
+          View Projects
         </button>
       </div>
     </div>

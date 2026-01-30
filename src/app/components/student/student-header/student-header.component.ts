@@ -22,7 +22,8 @@ export class StudentHeaderComponent {
       leave: 'leave-section',
       course: 'course-section',
       schedule: 'schedule-section',
-      notice: 'notice-section'
+      notice: 'notice-section',
+      projects: 'project-section'
     };
 
     const targetId = sectionMap[section];

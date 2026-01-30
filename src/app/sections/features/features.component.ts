@@ -25,6 +25,7 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
   isCourseModalOpen = false;
   isScheduleModalOpen = false;
   isNoticeModalOpen = false;
+  isProjectModalOpen = false;
 
   activeSection: 'assignment' | 'leave' | 'course' | null = null;
   private observer?: IntersectionObserver;
@@ -55,6 +56,11 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
     {
       icon: '📄',
       title: 'Notice',
+      description: ''
+    },
+    {
+      icon: '💼',
+      title: 'Project',
       description: ''
     }
   ];
@@ -97,6 +103,14 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
 
   closeNoticeModal() {
     this.isNoticeModalOpen = false;
+  }
+
+  openProjectModal() {
+    this.isProjectModalOpen = true;
+  }
+
+  closeProjectModal() {
+    this.isProjectModalOpen = false;
   }
 
   ngAfterViewInit(): void {
