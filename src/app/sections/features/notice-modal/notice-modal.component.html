@@ -23,9 +23,24 @@
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Chat Input -->
     <div class="chat-footer">
-      <p class="footer-note">📌 All important notices will appear here</p>
+      <div class="input-wrapper">
+        <input 
+          type="text" 
+          [(ngModel)]="newMessage"
+          (keyup.enter)="sendMessage()"
+          placeholder="Type a message..."
+          class="chat-input"
+        />
+        <button 
+          class="send-btn" 
+          (click)="sendMessage()"
+          [disabled]="!newMessage.trim()"
+        >
+          <span class="send-icon">📤</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
