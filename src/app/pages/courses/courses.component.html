@@ -1,0 +1,33 @@
+<div class="courses-page">
+  <div class="page-header">
+    <button class="btn-back" (click)="goBack()">
+      <span class="back-icon">←</span> Back to Dashboard
+    </button>
+    <h1 class="page-title">
+      <span class="title-icon">🎓</span>
+      All Courses & Video Resources
+    </h1>
+    <p class="page-subtitle">Explore our comprehensive collection of programming courses</p>
+  </div>
+
+  <div class="courses-container">
+    <div class="course-card" *ngFor="let course of courses">
+      <div class="course-thumbnail" *ngIf="course.thumbnail">
+        <img [src]="course.thumbnail" [alt]="course.title" />
+        <div class="play-overlay">
+          <span class="play-icon">▶</span>
+        </div>
+      </div>
+      <div class="course-content">
+        <div class="course-badge">{{ course.level }}</div>
+        <h3 class="course-title">{{ course.title }}</h3>
+        <p class="course-description">{{ course.description }}</p>
+        <div class="course-video">
+          <a class="video-link" [href]="course.videoUrl" target="_blank" rel="noopener">
+            <span class="video-icon">🎥</span> Watch Course →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

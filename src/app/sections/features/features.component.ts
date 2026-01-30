@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { AssignmentModalComponent } from './assignment-modal/assignment-modal.component';
 import { LeaveModalComponent } from './leave-modal/leave-modal.component';
-import { CourseModalComponent } from './course-modal/course-modal.component';
 import { NoticeModalComponent } from './notice-modal/notice-modal.component';
 import { ProjectModalComponent } from './project-modal/project-modal.component';
 
@@ -16,14 +16,13 @@ interface Feature {
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, CourseModalComponent, NoticeModalComponent, ProjectModalComponent],
+  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, NoticeModalComponent, ProjectModalComponent],
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements AfterViewInit, OnDestroy {
   isModalOpen = false;
   isLeaveModalOpen = false;
-  isCourseModalOpen = false;
   isScheduleModalOpen = false;
   isNoticeModalOpen = false;
   isProjectModalOpen = false;
@@ -31,7 +30,7 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
   activeSection: 'assignment' | 'leave' | 'course' | null = null;
   private observer?: IntersectionObserver;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
 
   features: Feature[] = [
     {
@@ -83,11 +82,7 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
   }
 
   openCourseModal() {
-    this.isCourseModalOpen = true;
-  }
-
-  closeCourseModal() {
-    this.isCourseModalOpen = false;
+    this.router.navigate(['/courses']);
   }
 
   openScheduleModal() {

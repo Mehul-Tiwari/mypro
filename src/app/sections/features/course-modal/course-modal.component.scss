@@ -85,15 +85,78 @@
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 16px;
+  overflow: hidden;
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: #0ea5e9;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+
+    .play-overlay {
+      opacity: 1;
+    }
+
+    .course-thumbnail img {
+      transform: scale(1.05);
+    }
   }
+}
+
+.course-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  overflow: hidden;
+  background: #000;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    .play-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #0ea5e9;
+      padding-left: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.course-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-badge {
@@ -123,23 +186,30 @@
 
 .course-video {
   display: flex;
-  gap: 6px;
   align-items: center;
-}
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
 
-.video-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #0f172a;
-}
+  .video-link {
+    font-size: 14px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
 
-.video-link {
-  font-size: 12px;
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 600;
+    .video-icon {
+      font-size: 16px;
+    }
 
-  &:hover { text-decoration: underline; }
+    &:hover {
+      color: #1d4ed8;
+      gap: 10px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
