@@ -10,16 +10,19 @@ import { CommonModule } from '@angular/common';
 })
 export class StudentHeaderComponent {
   @Output() logout = new EventEmitter<void>();
+  @Output() navigate = new EventEmitter<string>();
 
   onLogout(): void {
     this.logout.emit();
   }
 
-  navigate(section: string): void {
+  navigateToSection(section: string): void {
     const sectionMap: Record<string, string> = {
       assignment: 'assignment-section',
       leave: 'leave-section',
-      course: 'course-section'
+      course: 'course-section',
+      schedule: 'schedule-section',
+      notice: 'notice-section'
     };
 
     const targetId = sectionMap[section];
@@ -28,9 +31,7 @@ export class StudentHeaderComponent {
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      return;
+      this.navigate.emit(section);
     }
-
-    console.log('Navigating to:', section);
   }
 }

@@ -1,0 +1,31 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="header-info">
+        <h2>📢 Notice Board</h2>
+        <p class="online-status">● Admin Active</p>
+      </div>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="chat-container">
+      <div class="chat-messages">
+        <div *ngFor="let notice of notices" 
+             class="message-wrapper"
+             [class.admin-message]="notice.isAdmin">
+          <div class="message-bubble">
+            <p class="message-text">{{ notice.message }}</p>
+            <span class="message-time">{{ notice.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="chat-footer">
+      <p class="footer-note">📌 All important notices will appear here</p>
+    </div>
+  </div>
+</div>

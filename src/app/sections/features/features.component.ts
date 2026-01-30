@@ -1,9 +1,10 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 import { AssignmentModalComponent } from './assignment-modal/assignment-modal.component';
 import { LeaveModalComponent } from './leave-modal/leave-modal.component';
 import { CourseModalComponent } from './course-modal/course-modal.component';
+import { NoticeModalComponent } from './notice-modal/notice-modal.component';
 
 interface Feature {
   icon: string;
@@ -14,7 +15,7 @@ interface Feature {
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, CourseModalComponent],
+  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, CourseModalComponent, NoticeModalComponent],
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })
@@ -22,9 +23,13 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
   isModalOpen = false;
   isLeaveModalOpen = false;
   isCourseModalOpen = false;
+  isScheduleModalOpen = false;
+  isNoticeModalOpen = false;
 
   activeSection: 'assignment' | 'leave' | 'course' | null = null;
   private observer?: IntersectionObserver;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   features: Feature[] = [
     {
@@ -40,6 +45,16 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
     {
       icon: '🏆',
       title: 'Course',
+      description: ''
+    },
+    {
+      icon: '🎓',
+      title: 'Schedule',
+      description: ''
+    },
+    {
+      icon: '📄',
+      title: 'Notice',
       description: ''
     }
   ];
@@ -68,7 +83,28 @@ export class FeaturesComponent implements AfterViewInit, OnDestroy {
     this.isCourseModalOpen = false;
   }
 
+  openScheduleModal() {
+    this.isScheduleModalOpen = true;
+  }
+
+  closeScheduleModal() {
+    this.isScheduleModalOpen = false;
+  }
+
+  openNoticeModal() {
+    this.isNoticeModalOpen = true;
+  }
+
+  closeNoticeModal() {
+    this.isNoticeModalOpen = false;
+  }
+
   ngAfterViewInit(): void {
+    // Only run IntersectionObserver in browser environment
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const sectionIds: Array<{ id: string; key: 'assignment' | 'leave' | 'course' }> = [
       { id: 'assignment-section', key: 'assignment' },
       { id: 'leave-section', key: 'leave' },

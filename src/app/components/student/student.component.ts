@@ -14,4 +14,8 @@ export class StudentComponent {
   onLogout(): void {
     console.log('User logged out');
   }
+
+  onNavigate(section: string): void {
+    console.log('Navigated to section:', section);
+  }
 }
