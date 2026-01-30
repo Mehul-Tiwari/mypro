@@ -31,27 +31,27 @@ export class CoursesComponent {
       thumbnail: 'https://i.ytimg.com/vi/rklidcZ-aLU/maxresdefault.jpg'
     },
     {
-      title: 'IMCA Fundamentals',
+      title: 'HTML Tutorial for Beginners',
       level: 'Beginner',
-      description: 'Core concepts of computer applications and data handling.',
-      videoTitle: 'IMCA Intro Lecture',
-      videoUrl: 'https://www.youtube.com/watch?v=HcOc7P5BMi4',
+      description: 'Complete HTML with notes and code for beginners.',
+      videoTitle: 'HTML Tutorial for Beginners',
+      videoUrl: 'https://youtu.be/HcOc7P5BMi4?si=DBRYZQUwHAiJDBFq',
       thumbnail: 'https://i.ytimg.com/vi/HcOc7P5BMi4/maxresdefault.jpg'
     },
     {
-      title: 'DAA (Design & Analysis of Algorithms)',
+      title: 'Data Structures and Algorithms in Python',
       level: 'Intermediate',
-      description: 'Algorithm design techniques with complexity analysis.',
-      videoTitle: 'DAA Full Course',
-      videoUrl: 'https://www.youtube.com/watch?v=pkYVOmU3MgA',
+      description: 'Full course for beginners covering DSA concepts in Python.',
+      videoTitle: 'DSA in Python - Full Course',
+      videoUrl: 'https://youtu.be/pkYVOmU3MgA?si=8nEcqwkZwBmx12Ox',
       thumbnail: 'https://i.ytimg.com/vi/pkYVOmU3MgA/maxresdefault.jpg'
     },
     {
-      title: 'Web Development',
+      title: 'HTML & CSS Full Course',
       level: 'Beginner',
-      description: 'HTML, CSS, and modern web development basics.',
-      videoTitle: 'Web Development Crash Course',
-      videoUrl: 'https://www.youtube.com/watch?v=G3e-cpL7ofc',
+      description: 'Beginner to Pro - Complete HTML and CSS course.',
+      videoTitle: 'HTML & CSS Full Course',
+      videoUrl: 'https://youtu.be/G3e-cpL7ofc?si=qUzWikd63ebwMNtR',
       thumbnail: 'https://i.ytimg.com/vi/G3e-cpL7ofc/maxresdefault.jpg'
     },
     {
@@ -87,36 +87,124 @@ export class CoursesComponent {
       thumbnail: 'https://i.ytimg.com/vi/_uQrJ0TkZlc/maxresdefault.jpg'
     },
     {
-      title: 'JavaScript Complete Course',
+      title: 'NodeJS Complete Course in Hindi',
       level: 'Beginner',
-      description: 'Master JavaScript from basics to advanced concepts with practical examples.',
-      videoTitle: 'JavaScript Full Course',
-      videoUrl: 'https://youtu.be/AZzV3wZCvI4?si=fQgstJEOxxmQtzJH',
+      description: 'Introduction to NodeJS with notes and certification.',
+      videoTitle: 'NodeJS Complete Course',
+      videoUrl: 'https://youtu.be/AZzV3wZCvI4?si=HB5oHOi96jSLTkul',
       thumbnail: 'https://i.ytimg.com/vi/AZzV3wZCvI4/maxresdefault.jpg'
     },
     {
-      title: 'Node.js Backend Development',
-      level: 'Intermediate',
-      description: 'Build scalable backend applications with Node.js and Express.',
-      videoTitle: 'Node.js Complete Tutorial',
-      videoUrl: 'https://youtu.be/D1eL1EnxXXQ?si=p8Tr2250DTQaEMIj',
+      title: 'AI Complete OneShot Course for Beginners',
+      level: 'Beginner',
+      description: 'Learn AI & ML fundamentals from scratch.',
+      videoTitle: 'AI Complete Course',
+      videoUrl: 'https://youtu.be/D1eL1EnxXXQ?si=TaOUlU3DPrKooUbB',
       thumbnail: 'https://i.ytimg.com/vi/D1eL1EnxXXQ/maxresdefault.jpg'
     },
     {
-      title: 'MongoDB Database Course',
+      title: 'Generative AI Full Course',
       level: 'Intermediate',
-      description: 'Learn NoSQL database concepts and MongoDB fundamentals.',
-      videoTitle: 'MongoDB Full Course',
-      videoUrl: 'https://youtu.be/mEsleV16qdo?si=IYfZLKyJSgvW4LQA',
+      description: 'Gemini Pro, OpenAI, Llama, Langchain, Pinecone, Vector Databases & More.',
+      videoTitle: 'Generative AI Full Course',
+      videoUrl: 'https://youtu.be/mEsleV16qdo?si=K31YyfuZ8tFlAIaB',
       thumbnail: 'https://i.ytimg.com/vi/mEsleV16qdo/maxresdefault.jpg'
     },
     {
-      title: 'Full Stack MERN Development',
+      title: 'Artificial Intelligence Full Course',
       level: 'Advanced',
-      description: 'Complete MERN stack (MongoDB, Express, React, Node) development course.',
-      videoTitle: 'MERN Stack Full Course',
-      videoUrl: 'https://youtu.be/JMUxmLyrhSk?si=uVinK_MSj2-bC6nU',
+      description: 'Artificial Intelligence tutorial for beginners by Edureka.',
+      videoTitle: 'Artificial Intelligence Full Course',
+      videoUrl: 'https://youtu.be/JMUxmLyrhSk?si=4tevEyAwQmT9uODU',
       thumbnail: 'https://i.ytimg.com/vi/JMUxmLyrhSk/maxresdefault.jpg'
+    },
+    {
+      title: 'Angular Tutorial in Hindi',
+      level: 'Beginner',
+      description: 'Complete Angular tutorial in Hindi for beginners.',
+      videoTitle: 'Angular Tutorial in Hindi',
+      videoUrl: 'https://youtu.be/0LhBvp8qpro?si=dN2v4IUi6-bFbgXz',
+      thumbnail: 'https://i.ytimg.com/vi/0LhBvp8qpro/maxresdefault.jpg'
+    },
+    {
+      title: 'React vs Angular - Which one to Learn?',
+      level: 'Beginner',
+      description: 'Comparison between React and Angular frameworks.',
+      videoTitle: 'React vs Angular',
+      videoUrl: 'https://youtu.be/L1pfd9iHaWw?si=Rf8MNFuY3yd10q0K',
+      thumbnail: 'https://i.ytimg.com/vi/L1pfd9iHaWw/maxresdefault.jpg'
+    },
+    {
+      title: 'JavaScript Tutorial (2024) for Beginners to Pro',
+      level: 'Beginner',
+      description: 'Complete JavaScript tutorial with notes, projects and practice questions.',
+      videoTitle: 'JavaScript Tutorial 2024',
+      videoUrl: 'https://youtu.be/VlPiVmYuoqw?si=5fr46hJFFxgJ-5I7',
+      thumbnail: 'https://i.ytimg.com/vi/VlPiVmYuoqw/maxresdefault.jpg'
+    },
+    {
+      title: 'React JS 19 Full Course in Hindi',
+      level: 'Intermediate',
+      description: 'Learn React from scratch (2025) in one video.',
+      videoTitle: 'React JS 19 Full Course',
+      videoUrl: 'https://youtu.be/LuNPCSNr-nE?si=bzWI1h0hHpQfwOzz',
+      thumbnail: 'https://i.ytimg.com/vi/LuNPCSNr-nE/maxresdefault.jpg'
+    },
+    {
+      title: 'Cybersecurity Fundamentals',
+      level: 'Beginner',
+      description: 'Core concepts in cybersecurity: threats, defenses, and best practices. (YouTuber: TBD)',
+      videoTitle: 'Cybersecurity Basics (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'Linux Command Line Essentials',
+      level: 'Beginner',
+      description: 'Learn essential Linux commands and shell workflows. (YouTuber: TBD)',
+      videoTitle: 'Linux CLI Essentials (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'Networking Basics (CCNA Prep)',
+      level: 'Intermediate',
+      description: 'Networking fundamentals: IP addressing, routing, and switching. (YouTuber: TBD)',
+      videoTitle: 'Networking Basics (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'Database Design & SQL',
+      level: 'Beginner',
+      description: 'Relational database design, normalization, and SQL queries. (YouTuber: TBD)',
+      videoTitle: 'SQL & Database Design (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'Cloud Computing Basics (AWS/Azure)',
+      level: 'Beginner',
+      description: 'Intro to cloud services, compute, storage, and networking. (YouTuber: TBD)',
+      videoTitle: 'Cloud Computing Basics (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'DevOps Fundamentals',
+      level: 'Intermediate',
+      description: 'CI/CD, containers, and DevOps practices overview. (YouTuber: TBD)',
+      videoTitle: 'DevOps Fundamentals (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'Data Structures & Algorithms (DSA)',
+      level: 'Intermediate',
+      description: 'Essential DSA topics for interviews and problem-solving. (YouTuber: TBD)',
+      videoTitle: 'DSA Fundamentals (Link TBD)',
+      videoUrl: '#'
+    },
+    {
+      title: 'System Design Basics',
+      level: 'Advanced',
+      description: 'Scalable systems, architecture patterns, and design trade-offs. (YouTuber: TBD)',
+      videoTitle: 'System Design Basics (Link TBD)',
+      videoUrl: '#'
     }
   ];
 
