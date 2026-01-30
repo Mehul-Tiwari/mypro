@@ -5,6 +5,7 @@ import { AssignmentModalComponent } from './assignment-modal/assignment-modal.co
 import { LeaveModalComponent } from './leave-modal/leave-modal.component';
 import { CourseModalComponent } from './course-modal/course-modal.component';
 import { NoticeModalComponent } from './notice-modal/notice-modal.component';
+import { ProjectModalComponent } from './project-modal/project-modal.component';
 
 interface Feature {
   icon: string;
@@ -15,7 +16,7 @@ interface Feature {
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, CourseModalComponent, NoticeModalComponent],
+  imports: [CommonModule, AssignmentModalComponent, LeaveModalComponent, CourseModalComponent, NoticeModalComponent, ProjectModalComponent],
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })

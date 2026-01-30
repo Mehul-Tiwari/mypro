@@ -1,0 +1,245 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="header-left">
+        <button *ngIf="currentView !== 'options'" class="back-btn" (click)="selectedRepo ? backToList() : backToOptions()">
+          ← {{ selectedRepo ? 'Back to repos' : 'Back' }}
+        </button>
+        <h2>
+          <span *ngIf="currentView === 'options'">💼 My Projects</span>
+          <span *ngIf="currentView === 'public' && !selectedRepo">🌐 Public Repositories</span>
+          <span *ngIf="currentView === 'private' && !selectedRepo">🔒 Private Repositories</span>
+          <span *ngIf="selectedRepo">{{ selectedRepo.name }}</span>
+        </h2>
+      </div>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body">
+      
+      <!-- Options View -->
+      <div class="options-view" *ngIf="currentView === 'options'">
+        <h3 class="section-title">Choose Repository Type</h3>
+        <div class="options-grid">
+          <div class="option-card" (click)="selectView('public')">
+            <div class="option-icon">🌐</div>
+            <h4>Public Repositories</h4>
+            <p>Visible to teachers and students</p>
+            <span class="badge public">Public</span>
+          </div>
+
+          <div class="option-card" (click)="selectView('private')">
+            <div class="option-icon">🔒</div>
+            <h4>Private Repositories</h4>
+            <p>Only you can see these</p>
+            <span class="badge private">Private</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repository List (Public or Private) -->
+      <div class="repos-view" *ngIf="(currentView === 'public' || currentView === 'private') && !selectedRepo && !showCreateForm">
+        <div class="repos-header">
+          <input type="file" [id]="currentView + 'Upload'" (change)="onFileUpload($event, currentView)" style="display: none;" />
+          <button class="btn-upload-file" [disabled]="uploadingFile">
+            <label [for]="currentView + 'Upload'" style="cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0;">
+              <span>📤</span> {{ uploadingFile ? 'Uploading...' : 'Upload File' }}
+            </label>
+          </button>
+          <button class="btn-create" (click)="openCreateForm()">
+            <span>📝</span> New Repository
+          </button>
+        </div>
+
+        <div class="repos-list">
+          <div class="repo-card" 
+               *ngFor="let repo of currentView === 'public' ? publicRepos : privateRepos"
+               (click)="viewRepository(repo)">
+            <div class="repo-header">
+              <div class="repo-title">
+                <h4>{{ repo.name }}</h4>
+                <span class="visibility-badge" [class]="repo.visibility">
+                  {{ repo.visibility === 'public' ? '🌐 Public' : '🔒 Private' }}
+                </span>
+              </div>
+              <p class="repo-description">{{ repo.description }}</p>
+            </div>
+            
+            <div class="repo-footer">
+              <div class="repo-meta">
+                <span class="language">
+                  <span class="lang-dot" [style.background]="getLanguageColor(repo.language)"></span>
+                  {{ repo.language }}
+                </span>
+                <span class="stars" *ngIf="repo.stars > 0">⭐ {{ repo.stars }}</span>
+                <span class="forks" *ngIf="repo.forks > 0">🔀 {{ repo.forks }}</span>
+                <span class="updated">Updated {{ repo.updatedAt }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="empty-state" *ngIf="(currentView === 'public' ? publicRepos : privateRepos).length === 0">
+            <div class="empty-icon">📂</div>
+            <p>No repositories yet</p>
+            <button class="btn-create-alt" (click)="openCreateForm()">Create your first repository</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repository Detail View -->
+      <div class="repo-detail" *ngIf="selectedRepo && !showCreateForm">
+        <div class="repo-info">
+          <div class="info-header">
+            <div>
+              <h3>{{ selectedRepo.name }}</h3>
+              <p>{{ selectedRepo.description }}</p>
+            </div>
+            <span class="visibility-badge-large" [class]="selectedRepo.visibility">
+              {{ selectedRepo.visibility === 'public' ? '🌐 Public' : '🔒 Private' }}
+            </span>
+          </div>
+          
+          <div class="repo-stats">
+            <div class="stat">
+              <span class="lang-dot" [style.background]="getLanguageColor(selectedRepo.language)"></span>
+              {{ selectedRepo.language }}
+            </div>
+            <div class="stat" *ngIf="selectedRepo.stars > 0">⭐ {{ selectedRepo.stars }} stars</div>
+            <div class="stat" *ngIf="selectedRepo.forks > 0">🔀 {{ selectedRepo.forks }} forks</div>
+            <div class="stat">Updated {{ selectedRepo.updatedAt }}</div>
+          </div>
+        </div>
+
+        <!-- Files Section -->
+        <div class="files-section">
+          <h4 class="section-header">📁 Files</h4>
+          <div class="files-list">
+            <div class="file-item" *ngFor="let file of selectedRepo.files" 
+                 [class.clickable]="file.type === 'file'"
+                 (click)="openFile(file)">
+              <div class="file-icon">{{ file.type === 'folder' ? '📁' : '📄' }}</div>
+              <div class="file-info">
+                <span class="file-name">{{ file.name }}</span>
+                <span class="file-meta" *ngIf="file.size">{{ file.size }} • {{ file.lastModified }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- README Section -->
+        <div class="readme-section">
+          <h4 class="section-header">📖 README.md</h4>
+          <div class="readme-content">
+            <pre>{{ selectedRepo.readme }}</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Viewer/Editor -->
+      <div class="file-viewer" *ngIf="currentView === 'file-viewer' && selectedFile">
+        <div class="file-header">
+          <div class="file-header-left">
+            <button class="btn-back" (click)="closeFileViewer()">← Back to Repository</button>
+            <h3>📄 {{ selectedFile.name }}</h3>
+          </div>
+          <div class="file-actions">
+            <button class="btn-edit" *ngIf="!isEditingFile" (click)="enableEdit()">
+              ✏️ Edit
+            </button>
+            <button class="btn-save" *ngIf="isEditingFile" (click)="saveFile()">
+              💾 Save
+            </button>
+            <button class="btn-cancel" *ngIf="isEditingFile" (click)="cancelEdit()">
+              ✕ Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="file-content-area">
+          <div class="file-meta-info">
+            <span>Size: {{ selectedFile.size }}</span>
+            <span>Last modified: {{ selectedFile.lastModified }}</span>
+          </div>
+          
+          <div class="file-content" *ngIf="!isEditingFile">
+            <pre>{{ fileContent }}</pre>
+          </div>
+
+          <textarea 
+            *ngIf="isEditingFile"
+            [(ngModel)]="fileContent"
+            class="file-editor"
+            placeholder="Write your content here..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Create Repository Form -->
+      <div class="create-form" *ngIf="showCreateForm">
+        <h3 class="form-title">Create a new repository</h3>
+        
+        <div class="form-group">
+          <label>Repository name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            [(ngModel)]="newRepoData.name"
+            placeholder="my-awesome-project"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea 
+            [(ngModel)]="newRepoData.description"
+            placeholder="A brief description of your repository..."
+            class="form-textarea"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Visibility</label>
+          <div class="visibility-options">
+            <div class="visibility-option" 
+                 [class.selected]="newRepoData.visibility === 'public'"
+                 (click)="newRepoData.visibility = 'public'">
+              <div class="option-header">
+                <span class="radio" [class.checked]="newRepoData.visibility === 'public'"></span>
+                <strong>🌐 Public</strong>
+              </div>
+              <p>Anyone can see this repository</p>
+            </div>
+
+            <div class="visibility-option" 
+                 [class.selected]="newRepoData.visibility === 'private'"
+                 (click)="newRepoData.visibility = 'private'">
+              <div class="option-header">
+                <span class="radio" [class.checked]="newRepoData.visibility === 'private'"></span>
+                <strong>🔒 Private</strong>
+              </div>
+              <p>Only you can see this repository</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" checked disabled> Initialize with README
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-cancel" (click)="closeCreateForm()">Cancel</button>
+          <button class="btn-submit" (click)="createRepository()">
+            <span>📝</span> Create Repository
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

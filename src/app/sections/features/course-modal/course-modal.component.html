@@ -7,14 +7,21 @@
 
     <div class="course-grid">
       <div class="course-card" *ngFor="let course of courses">
-        <div class="course-badge">{{ course.level }}</div>
-        <h3 class="course-title">{{ course.title }}</h3>
-        <p class="course-description">{{ course.description }}</p>
-        <div class="course-video">
-          <span class="video-label">Video:</span>
-          <a class="video-link" [href]="course.videoUrl" target="_blank" rel="noopener">
-            {{ course.videoTitle }} →
-          </a>
+        <div class="course-thumbnail" *ngIf="course.thumbnail">
+          <img [src]="course.thumbnail" [alt]="course.title" />
+          <div class="play-overlay">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+        <div class="course-content">
+          <div class="course-badge">{{ course.level }}</div>
+          <h3 class="course-title">{{ course.title }}</h3>
+          <p class="course-description">{{ course.description }}</p>
+          <div class="course-video">
+            <a class="video-link" [href]="course.videoUrl" target="_blank" rel="noopener">
+              <span class="video-icon">🎥</span> Watch Course →
+            </a>
+          </div>
         </div>
       </div>
     </div>
