@@ -1,0 +1,92 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Footer Header Section -->
+    <div class="footer-header">
+      <div class="footer-brand">
+        <h2 class="brand-name">EduHub</h2>
+        <p class="brand-tagline">Empowering Education, Inspiring Excellence</p>
+      </div>
+      <p class="footer-description">
+        EduHub is your comprehensive student management platform designed to streamline academic processes, 
+        enhance learning experiences, and foster excellence in education.
+      </p>
+      
+      <!-- Social Media Icons -->
+      <div class="social-media">
+        <a *ngFor="let social of socialLinks" 
+           [href]="social.url" 
+           class="social-icon" 
+           [title]="social.name"
+           target="_blank"
+           rel="noopener noreferrer">
+          {{ social.icon }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Content Grid -->
+    <div class="footer-content">
+      <!-- Quick Links Column -->
+      <div class="footer-column">
+        <h3 class="column-title">Quick Links</h3>
+        <ul class="link-list">
+          <li *ngFor="let link of quickLinks">
+            <a [href]="link.href">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Student Resources Column -->
+      <div class="footer-column">
+        <h3 class="column-title">Student Resources</h3>
+        <ul class="link-list">
+          <li *ngFor="let resource of resources">
+            <a [href]="resource.href">{{ resource.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div class="footer-column">
+        <h3 class="column-title">Support</h3>
+        <ul class="link-list">
+          <li *ngFor="let item of support">
+            <a [href]="item.href">{{ item.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-column">
+        <h3 class="column-title">Contact Us</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="icon">📍</span>
+            <p>{{ contactInfo.address }}</p>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📞</span>
+            <a [href]="'tel:' + contactInfo.phone">{{ contactInfo.phone }}</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span>
+            <a [href]="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="bottom-content">
+        <p class="copyright">&copy; {{ currentYear }} EduHub. All Rights Reserved.</p>
+        <div class="legal-links">
+          <a *ngFor="let link of legal; let last = last" [href]="link.href">
+            {{ link.label }}<span *ngIf="!last" class="separator"> • </span>
+          </a>
+        </div>
+        <p class="made-with">Made with <span class="heart">❤</span> for Students & Educators</p>
+      </div>
+    </div>
+  </div>
+</footer>

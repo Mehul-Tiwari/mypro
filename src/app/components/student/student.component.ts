@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentHeaderComponent } from './student-header/student-header.component';
 import { FeaturesComponent } from '../../sections/features/features.component';
+import { FooterComponent } from '../../sections/footer/footer.component';
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, StudentHeaderComponent, FeaturesComponent],
+  imports: [CommonModule, StudentHeaderComponent, FeaturesComponent, FooterComponent],
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
