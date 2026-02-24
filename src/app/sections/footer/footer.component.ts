@@ -47,10 +47,25 @@ export class FooterComponent {
   };
 
   socialLinks = [
-    { icon: '📘', name: 'Facebook', url: '#' },
-    { icon: '🐦', name: 'Twitter', url: '#' },
-    { icon: '📷', name: 'Instagram', url: '#' },
-    { icon: '💼', name: 'LinkedIn', url: '#' },
-    { icon: '📺', name: 'YouTube', url: '#' }
+    { 
+      image: 'assets/images/facebook.jpg', 
+      name: 'Facebook', 
+      url: 'https://facebook.com' 
+    },
+    { 
+      image: 'assets/images/Twitter.png', 
+      name: 'Twitter', 
+      url: 'https://twitter.com' 
+    },
+    { 
+      image: 'assets/images/Instagram.jpg', 
+      name: 'Instagram', 
+      url: 'https://instagram.com' 
+    },
+    { 
+      image: 'assets/images/Linkedln.png', 
+      name: 'LinkedIn', 
+      url: 'https://linkedin.com' 
+    }
   ];
 }
