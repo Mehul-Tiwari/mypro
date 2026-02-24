@@ -6,7 +6,7 @@
     <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&h=600&fit=crop&q=80" alt="College Building" class="banner-image">
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <h1>Welcome to Excellence</h1>
+      <h1>Welcome to EduHub</h1>
       <p>Empowering Students, Building Future Leaders</p>
       <div class="banner-buttons">
         <button class="btn-primary">Explore Programs</button>
@@ -17,6 +17,24 @@
 
   <!-- Features Section -->
   <app-features></app-features>
+
+  <!-- Recommended Coding Platforms Section -->
+  <section class="coding-platforms">
+    <h2 class="platforms-title">Recommended Coding Platforms</h2>
+    <p class="platforms-subtitle">Enhance your programming skills with these top platforms</p>
+    
+    <div class="platforms-grid">
+      <div *ngFor="let platform of codingPlatforms" 
+           class="platform-card"
+           (click)="openPlatform(platform.url)">
+        <div class="platform-icon" [style.background]="platform.bgColor">
+          <img [src]="platform.logo" [alt]="platform.name">
+        </div>
+        <h3 class="platform-name">{{ platform.name }}</h3>
+        <p class="platform-description">{{ platform.description }}</p>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Footer Section -->

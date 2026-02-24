@@ -176,3 +176,167 @@
     }
   }
 }
+
+// ==========================================
+// Recommended Coding Platforms Section
+// ==========================================
+.coding-platforms {
+  background: transparent;
+  padding: 60px 20px;
+  margin: 0;
+  text-align: center;
+
+  .platforms-title {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .platforms-subtitle {
+    margin: 0 0 40px 0;
+    font-size: 16px;
+    color: #64748b;
+    font-weight: 400;
+  }
+
+  .platforms-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .platform-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 15px;
+    width: 140px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .platform-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &:hover .platform-icon {
+      transform: scale(1.05);
+    }
+
+    .platform-name {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .platform-description {
+      margin: 0;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+  }
+}
+
+// Responsive Design for Coding Platforms
+@media (max-width: 768px) {
+  .coding-platforms {
+    padding: 40px 20px;
+
+    .platforms-title {
+      font-size: 26px;
+    }
+
+    .platforms-subtitle {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .platforms-grid {
+      gap: 15px;
+    }
+
+    .platform-card {
+      width: 130px;
+      padding: 18px 12px;
+
+      .platform-icon {
+        width: 55px;
+        height: 55px;
+      }
+
+      .platform-name {
+        font-size: 15px;
+      }
+
+      .platform-description {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .coding-platforms {
+    padding: 30px 15px;
+
+    .platforms-title {
+      font-size: 22px;
+    }
+
+    .platforms-subtitle {
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .platforms-grid {
+      gap: 12px;
+    }
+
+    .platform-card {
+      width: 110px;
+      padding: 15px 10px;
+
+      .platform-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 12px;
+      }
+
+      .platform-name {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .platform-description {
+        font-size: 10px;
+      }
+    }
+  }
+}
