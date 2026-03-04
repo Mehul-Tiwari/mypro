@@ -1,6 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +12,23 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  @Output() loginSuccess = new EventEmitter<void>();
-
   loginForm: FormGroup;
-  userType: string = 'student';
+  userType: 'student' | 'teacher' = 'student';
   isLoading = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  switchUserType(type: string): void {
+  switchUserType(type: 'student' | 'teacher'): void {
     this.userType = type;
     this.errorMessage = '';
     this.loginForm.reset();
@@ -39,17 +43,28 @@ export class LoginComponent {
     this.isLoading = true;
     const credentials = this.loginForm.value;
 
-    // Simulate API call
-    setTimeout(() => {
-      if (credentials.email && credentials.password) {
-        console.log(`${this.userType} logged in successfully:`, credentials);
+    // Call auth service
+    this.authService.login(credentials.email, credentials.password, this.userType).subscribe({
+      next: (user) => {
         this.errorMessage = '';
-        this.loginSuccess.emit();
-      } else {
-        this.errorMessage = 'Invalid credentials. Please try again.';
+        console.log(`${this.userType} logged in successfully:`, user);
+        
+        // Navigate to appropriate dashboard
+        if (this.userType === 'student') {
+          this.router.navigate(['/student']);
+        } else {
+          this.router.navigate(['/teacher']);
+        }
+      },
+      error: (error) => {
+        this.errorMessage = 'Login failed. Please try again.';
+        console.error('Login error:', error);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
-      this.isLoading = false;
-    }, 1500);
+    });
   }
 
   get emailError(): string {
