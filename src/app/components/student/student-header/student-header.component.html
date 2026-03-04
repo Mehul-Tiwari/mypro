@@ -21,11 +21,29 @@
           <span class="icon">🏠</span>
           <span class="label">Home</span>
         </button>
-        <button class="icon-btn-with-label" title="Profile" (click)="navigateToSection('profile')">
-          <span class="icon">👤</span>
-          <span class="label">Profile</span>
-        </button>
-        <button class="btn-primary" (click)="onLogout()">Logout</button>
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown" [class.open]="isProfileOpen">
+          <button class="profile-btn" (click)="toggleProfileDropdown()" title="Profile Menu">
+            <span class="profile-avatar">{{ userInitials }}</span>
+          </button>
+          <div class="dropdown-menu" *ngIf="isProfileOpen">
+            <div class="dropdown-header">
+              <div class="user-info">
+                <p class="user-name">{{ userName }}</p>
+                <p class="user-email">{{ userEmail }}</p>
+              </div>
+            </div>
+            <hr class="dropdown-divider">
+            <button class="dropdown-item" (click)="navigateToProfile()">
+              <span class="icon">👤</span>
+              View Profile
+            </button>
+            <button class="dropdown-item" (click)="onLogout()">
+              <span class="icon">🚪</span>
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,50 @@
+<div class="student-profile" id="profile-section">
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-avatar-large">
+        {{ userInitials }}
+      </div>
+      <div class="profile-info">
+        <h1>{{ currentUser?.name }}</h1>
+        <p class="email">{{ currentUser?.email }}</p>
+        <p class="role">Student Account</p>
+      </div>
+    </div>
+
+    <!-- Profile Stats -->
+    <div class="profile-stats">
+      <div class="stat-card">
+        <div class="stat-value">12</div>
+        <div class="stat-label">Courses</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">85%</div>
+        <div class="stat-label">Average Score</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">24</div>
+        <div class="stat-label">Assignments</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">3</div>
+        <div class="stat-label">Leave Days</div>
+      </div>
+    </div>
+
+    <!-- Activity Section -->
+    <div class="activity-section">
+      <h2>Recent Activity</h2>
+      <div class="activity-list">
+        <div *ngFor="let activity of activities" class="activity-item">
+          <div class="activity-icon">📌</div>
+          <div class="activity-content">
+            <p class="activity-action">{{ activity.action }}</p>
+            <p class="activity-course">{{ activity.course }}</p>
+            <p class="activity-date">{{ activity.date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
