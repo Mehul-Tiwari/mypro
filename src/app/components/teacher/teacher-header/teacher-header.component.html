@@ -1,0 +1,71 @@
+<header class="teacher-header">
+  <!-- Top Navigation Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <!-- Logo -->
+      <div class="logo">
+        <h2>EduHub Teacher</h2>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav">
+        <button class="nav-item">Dashboard ▾</button>
+        <button class="nav-item">Classes ▾</button>
+        <button class="nav-item">Students ▾</button>
+        <button class="nav-item">Resources ▾</button>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="top-actions">
+        <button class="icon-btn-with-label" title="Home" (click)="navigateToSection('home')">
+          <span class="icon">🏠</span>
+          <span class="label">Home</span>
+        </button>
+        <button class="icon-btn-with-label" title="Profile" (click)="navigateToSection('profile')">
+          <span class="icon">👤</span>
+          <span class="label">Profile</span>
+        </button>
+        <button class="btn-primary" (click)="onLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Navigation Bar -->
+  <div class="secondary-bar">
+    <div class="secondary-bar-container">
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <input type="text" placeholder="Search students, classes, assignments..." />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Category Pills -->
+      <div class="category-pills">
+        <button class="pill" (click)="navigateToSection('attendance')">
+          <span class="icon">📋</span>
+          <span>Attendance</span>
+        </button>
+        <button class="pill" (click)="navigateToSection('grades')">
+          <span class="icon">📊</span>
+          <span>Grades</span>
+        </button>
+        <button class="pill" (click)="navigateToSection('assignments')">
+          <span class="icon">📝</span>
+          <span>Assignments</span>
+        </button>
+        <button class="pill" (click)="navigateToSection('submissions')">
+          <span class="icon">✅</span>
+          <span>Submissions</span>
+        </button>
+        <button class="pill" (click)="navigateToSection('announcements')">
+          <span class="icon">📢</span>
+          <span>Announcements</span>
+        </button>
+        <button class="pill" (click)="navigateToSection('reports')">
+          <span class="icon">📄</span>
+          <span>Reports</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

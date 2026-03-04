@@ -1,0 +1,48 @@
+.teacher-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.teacher-content {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-container {
+  background: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+
+  h1 {
+    margin: 0 0 16px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    color: #64748b;
+  }
+}
+
+@media (max-width: 768px) {
+  .teacher-content {
+    padding: 24px 16px;
+  }
+
+  .dashboard-container {
+    padding: 24px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+}
